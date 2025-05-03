@@ -6,15 +6,19 @@
   <title>Créer un compte</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
   <style>
+    * {
+      box-sizing: border-box;
+    }
     body {
+      margin: 0;
+      padding: 0;
       background-color: #0f172a;
-      color: white;
       font-family: 'Inter', sans-serif;
+      color: white;
+      height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      margin: 0;
     }
     .container {
       background-color: #1e293b;
@@ -24,7 +28,14 @@
       max-width: 400px;
       box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
     }
-    input {
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      font-weight: 600;
+      font-size: 22px;
+    }
+    input[type="email"],
+    input[type="password"] {
       width: 100%;
       padding: 14px;
       margin: 12px 0;
@@ -34,10 +45,13 @@
       color: white;
       font-size: 15px;
     }
+    input::placeholder {
+      color: #cbd5e1;
+    }
     button {
       width: 100%;
       padding: 14px;
-      background-color: #3b82f6;
+      background-color: #10b981;
       color: white;
       border: none;
       border-radius: 8px;
@@ -47,7 +61,7 @@
       margin-top: 18px;
     }
     button:hover {
-      background-color: #2563eb;
+      background-color: #059669;
     }
     .link {
       margin-top: 20px;
@@ -58,27 +72,61 @@
       color: #10b981;
       text-decoration: none;
     }
+    .link a:hover {
+      text-decoration: underline;
+    }
+    .error {
+      color: #f87171;
+      font-size: 14px;
+      margin-top: 10px;
+      display: none;
+    }
+    .g-recaptcha {
+      margin-top: 15px;
+    }
   </style>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
   <div class="container">
     <h2>Créer un compte</h2>
-    <form onsubmit="signup(event)">
+    <form id="signup-form">
       <input type="email" id="email" placeholder="Adresse e-mail" required />
       <input type="password" id="password" placeholder="Mot de passe" required />
+      <input type="password" id="confirm-password" placeholder="Confirmer le mot de passe" required />
+      <div class="g-recaptcha" data-sitekey="TA_NOUVELLE_CLÉ_PUBLIQUE"></div>
+      <div class="error" id="error-message">Veuillez valider le captcha.</div>
       <button type="submit">Créer un compte</button>
     </form>
     <div class="link">
-      <p>Déjà un compte ? <a href="index.html">Connexion</a></p>
+      <p>Déjà un compte ? <a href="login.html">Se connecter</a></p>
     </div>
   </div>
   <script>
-    function signup(e) {
+    document.getElementById("signup-form").addEventListener("submit", function(e) {
       e.preventDefault();
       const email = document.getElementById("email").value;
-      localStorage.setItem("user", JSON.stringify({ email }));
-      window.location.href = "home.html";
-    }
+      const password = document.getElementById("password").value;
+      const confirmPassword = document.getElementById("confirm-password").value;
+      const captchaResponse = grecaptcha.getResponse();
+      const errorBox = document.getElementById("error-message");
+
+      // Vérification du mot de passe
+      if (password !== confirmPassword) {
+        alert("Les mots de passe ne correspondent pas.");
+        return;
+      }
+
+      // Vérification du captcha
+      if (!captchaResponse) {
+        errorBox.style.display = "block";
+        return;
+      }
+
+      // Sauvegarder les informations de l'utilisateur (tu peux utiliser un backend pour enregistrer les données)
+      localStorage.setItem("user", JSON.stringify({ email, password }));
+      window.location.href = "home.html";  // Redirection vers la page d'accueil
+    });
   </script>
 </body>
 </html>
