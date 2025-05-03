@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Viewdb - Leaks</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #0f172a;
+      font-family: 'Inter', sans-serif;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+    header {
+      background-color: #1e293b;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: 600;
+    }
+    .categories {
+      display: flex;
+      gap: 20px;
+    }
+    .category {
+      font-size: 18px;
+      color: white;
+      text-decoration: none;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    .category:hover {
+      color: #10b981;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-grow: 1;
+      background-color: #1e293b;
+      flex-direction: column;
+      padding: 40px;
+    }
+    .category-button {
+      background-size: cover;
+      border-radius: 12px;
+      width: 300px;
+      height: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      color: white;
+      font-weight: 600;
+      border: 2px solid white;
+      box-shadow: 0 0 15px rgba(0, 255, 100, 0.7);
+      cursor: pointer;
+      margin: 20px;
+      transition: all 0.3s;
+    }
+    .category-button:nth-child(1) {
+      background-image: url('https://i.pinimg.com/736x/c3/43/22/c343227a5e1bf9010e82f4a462915c80.jpg');
+    }
+    .category-button:nth-child(2) {
+      background-image: url('https://i.pinimg.com/736x/3c/d8/6b/3cd86bf832649cb2cc10238dfa9e8a3e.jpg');
+    }
+    .category-button:nth-child(3) {
+      background-image: url('https://example.com/tech-image.jpg');
+    }
+    .category-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(0, 255, 100, 1);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Viewdb</div>
+    <div class="categories">
+      <a href="home.html" class="category">Accueil</a>
+      <a href="leak.html" class="category">Leaks</a>
+      <a href="contact.html" class="category">Nous contacter</a>
+    </div>
+  </header>
+
+  <div class="container">
+    <h2>Leaks - Catégories</h2>
+    <div>
+      <a href="#" class="category-button">Database</a>
+      <a href="#" class="category-button">Tools</a>
+      <a href="#" class="category-button">Tech</a>
+    </div>
+  </div>
+</body>
+</html>
