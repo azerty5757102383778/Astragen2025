@@ -1,10 +1,9 @@
-<!-- leak.html -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Viewdb - Leaks</title>
+  <title>Viewdb - Database</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
   <style>
     * { box-sizing: border-box; }
@@ -14,9 +13,9 @@
       background-color: #0f172a;
       font-family: 'Inter', sans-serif;
       color: white;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
-      height: 100vh;
     }
     header {
       background-color: #1e293b;
@@ -37,47 +36,43 @@
       font-size: 18px;
       color: white;
       text-decoration: none;
-      cursor: pointer;
     }
     .category:hover {
       color: #10b981;
     }
     .container {
-      flex-grow: 1;
-      background-color: #1e293b;
       padding: 40px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
+      flex-grow: 1;
     }
-    .buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 30px;
-      justify-content: center;
+    h2 {
+      margin-bottom: 30px;
+      font-size: 28px;
+      font-weight: 600;
     }
-    .category-button {
-      width: 300px;
-      height: 200px;
-      background-size: cover;
-      background-position: center;
+    .item {
+      background-color: #1e293b;
+      padding: 20px;
       border-radius: 12px;
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.1);
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
-      font-size: 24px;
+    }
+    .item-title {
+      font-size: 18px;
+      font-weight: 500;
+    }
+    .item-btn {
+      background-color: #10b981;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 8px;
       color: white;
       font-weight: 600;
-      border: 2px solid white;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
-      cursor: pointer;
-      transition: all 0.3s;
       text-decoration: none;
     }
-    .category-button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 25px rgba(255, 255, 255, 1);
+    .item-btn:hover {
+      background-color: #059669;
     }
   </style>
 </head>
@@ -92,17 +87,10 @@
   </header>
 
   <div class="container">
-    <h2>Catégories de Leaks</h2>
-    <div class="buttons">
-      <a href="database.html" class="category-button" style="background-image: url('https://i.pinimg.com/736x/c3/43/22/c343227a5e1bf9010e82f4a462915c80.jpg');">
-        Database
-      </a>
-      <a href="#" class="category-button" style="background-image: url('https://i.pinimg.com/736x/3c/d8/6b/3cd86bf832649cb2cc10238dfa9e8a3e.jpg');">
-        Tools
-      </a>
-      <a href="#" class="category-button" style="background-image: url('https://via.placeholder.com/300x200/0f172a/ffffff?text=Tech');">
-        Tech
-      </a>
+    <h2>Database Leaks</h2>
+    <div class="item">
+      <span class="item-title">x1371 Crunchyroll</span>
+      <a href="https://gofile.io/d/3utytV" target="_blank" class="item-btn">Télécharger</a>
     </div>
   </div>
 </body>
