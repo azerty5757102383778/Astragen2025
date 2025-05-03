@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Connexion</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #0f172a;
+      font-family: 'Inter', sans-serif;
+      color: white;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .container {
+      background-color: #1e293b;
+      padding: 40px;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      font-weight: 600;
+      font-size: 22px;
+    }
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 14px;
+      margin: 12px 0;
+      background-color: #334155;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 15px;
+    }
+    input::placeholder {
+      color: #cbd5e1;
+    }
+    button {
+      width: 100%;
+      padding: 14px;
+      background-color: #10b981;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 18px;
+    }
+    button:hover {
+      background-color: #059669;
+    }
+    .link {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 14px;
+    }
+    .link a {
+      color: #10b981;
+      text-decoration: none;
+    }
+    .link a:hover {
+      text-decoration: underline;
+    }
+    .error {
+      color: #f87171;
+      font-size: 14px;
+      margin-top: 10px;
+      display: none;
+    }
+    .g-recaptcha {
+      margin-top: 15px;
+    }
+  </style>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body>
+  <div class="container">
+    <h2>Se connecter</h2>
+    <form id="login-form">
+      <input type="email" id="email" placeholder="Adresse e-mail" required />
+      <input type="password" id="password" placeholder="Mot de passe" required />
+      <div class="g-recaptcha" data-sitekey="VOTRE_CLE_SITE_ICI"></div>
+      <div class="error" id="error-message">Veuillez valider le captcha.</div>
+      <button type="submit">Se connecter</button>
+    </form>
+    <div class="link">
+      <p>Pas encore de compte ? <a href="signup.html">Créer un compte</a></p>
+    </div>
+  </div>
+  <script>
+    document.getElementById("login-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const email = document.getElementById("email").value;
+      const captchaResponse = grecaptcha.getResponse();
+      const errorBox = document.getElementById("error-message");
+      if (!captchaResponse) {
+        errorBox.style.display = "block";
+        return;
+      }
+      localStorage.setItem("user", JSON.stringify({ email }));
+      window.location.href = "home.html";
+    });
+  </script>
+</body>
+</html>

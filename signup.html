@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Créer un compte</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      background-color: #0f172a;
+      color: white;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background-color: #1e293b;
+      padding: 40px;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+    }
+    input {
+      width: 100%;
+      padding: 14px;
+      margin: 12px 0;
+      background-color: #334155;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 15px;
+    }
+    button {
+      width: 100%;
+      padding: 14px;
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 18px;
+    }
+    button:hover {
+      background-color: #2563eb;
+    }
+    .link {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 14px;
+    }
+    .link a {
+      color: #10b981;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Créer un compte</h2>
+    <form onsubmit="signup(event)">
+      <input type="email" id="email" placeholder="Adresse e-mail" required />
+      <input type="password" id="password" placeholder="Mot de passe" required />
+      <button type="submit">Créer un compte</button>
+    </form>
+    <div class="link">
+      <p>Déjà un compte ? <a href="index.html">Connexion</a></p>
+    </div>
+  </div>
+  <script>
+    function signup(e) {
+      e.preventDefault();
+      const email = document.getElementById("email").value;
+      localStorage.setItem("user", JSON.stringify({ email }));
+      window.location.href = "home.html";
+    }
+  </script>
+</body>
+</html>
