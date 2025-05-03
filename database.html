@@ -1,0 +1,145 @@
+<!-- database.html -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Viewdb - Database</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #0f172a;
+      font-family: 'Inter', sans-serif;
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background-color: #1e293b;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: 600;
+    }
+    .categories {
+      display: flex;
+      gap: 20px;
+    }
+    .category {
+      font-size: 18px;
+      color: white;
+      text-decoration: none;
+    }
+    .category:hover {
+      color: #10b981;
+    }
+
+    .container {
+      padding: 40px;
+      flex-grow: 1;
+    }
+
+    h2 {
+      margin-bottom: 30px;
+      font-size: 28px;
+      font-weight: 600;
+    }
+
+    .search-bar {
+      margin-bottom: 30px;
+    }
+
+    .search-bar input {
+      width: 100%;
+      max-width: 500px;
+      padding: 14px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background-color: #1e293b;
+      color: white;
+      outline: none;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.15);
+    }
+
+    .list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .item {
+      background-color: #1e293b;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+      transition: 0.3s;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .item:hover {
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.1);
+    }
+
+    .item-title {
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    .item-btn {
+      background-color: #10b981;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .item-btn:hover {
+      background-color: #059669;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Viewdb</div>
+    <div class="categories">
+      <a href="home.html" class="category">Accueil</a>
+      <a href="leak.html" class="category">Leaks</a>
+      <a href="contact.html" class="category">Nous contacter</a>
+    </div>
+  </header>
+
+  <div class="container">
+    <h2>Database Leaks</h2>
+    <div class="search-bar">
+      <input type="text" placeholder="Rechercher une base..." />
+    </div>
+    <div class="list">
+      <div class="item">
+        <span class="item-title">Leak - Users 2023 (10K Emails)</span>
+        <button class="item-btn">Voir</button>
+      </div>
+      <div class="item">
+        <span class="item-title">Leak - Shopify clients dump</span>
+        <button class="item-btn">Voir</button>
+      </div>
+      <div class="item">
+        <span class="item-title">Leak - France admin DB (CSV)</span>
+        <button class="item-btn">Voir</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
