@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Discord Tools - DMALL</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      background: #0f172a;
+      font-family: 'Inter', sans-serif;
+      color: white;
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .sidebar {
+      width: 220px;
+      background: #1e293b;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+    .sidebar h2 {
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+    .sidebar a {
+      color: white;
+      text-decoration: none;
+      margin: 10px 0;
+      font-size: 16px;
+    }
+    .sidebar a:hover {
+      color: #10b981;
+    }
+    .main {
+      flex-grow: 1;
+      padding: 30px;
+      position: relative;
+    }
+    label {
+      font-weight: 600;
+      margin-top: 20px;
+      display: block;
+    }
+    input[type="text"], textarea {
+      width: 100%;
+      padding: 12px;
+      background-color: #334155;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      margin-top: 6px;
+      margin-bottom: 12px;
+      font-size: 14px;
+    }
+    textarea {
+      height: 100px;
+      resize: none;
+    }
+    .note {
+      color: #94a3b8;
+      font-size: 12px;
+      margin-top: -8px;
+      margin-bottom: 20px;
+    }
+    .btn {
+      padding: 10px 18px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+    .btn-green {
+      background-color: #10b981;
+      color: white;
+    }
+    .btn-red {
+      background-color: #ef4444;
+      color: white;
+    }
+    .btn-validate {
+      margin-left: 10px;
+      background-color: #3b82f6;
+      color: white;
+    }
+    .notification {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      background-color: #1e293b;
+      padding: 15px 20px;
+      border-left: 5px solid #10b981;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+      display: none;
+    }
+    .notification.error {
+      border-left-color: #ef4444;
+    }
+    .log-box {
+      position: absolute;
+      bottom: 30px;
+      left: 260px;
+      width: calc(100% - 280px);
+      height: 140px;
+      background-color: #1e293b;
+      padding: 10px;
+      overflow-y: auto;
+      border-radius: 8px;
+      font-size: 13px;
+      white-space: pre-line;
+    }
+    .log-success { color: #22c55e; }
+    .log-error { color: #f87171; }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>Discord Tools</h2>
+    <a href="dmall.html">DMALL</a>
+    <a href="#">Spam Webhook</a>
+    <div style="margin-top: auto; display: flex; gap: 10px;">
+      <button class="btn btn-green" onclick="startDmall()">Dmall</button>
+      <button class="btn btn-red" onclick="stopDmall()">Stop</button>
+    </div>
+  </div>
+  <div class="main">
+    <label for="token">Token du bot :</label>
+    <div style="display: flex; align-items: center;">
+      <input type="text" id="token" />
+      <button class="btn btn-validate" onclick="validateToken()">Valider</button>
+    </div>
+
+    <label for="message">Message :</label>
+    <textarea id="message"></textarea>
+    <div class="note">Note : Pour mentionner les utilisateurs en DM mettez {user}</div>
+
+    <label for="guild">ID :</label>
+    <input type="text" id="guild" />
+
+    <div class="log-box" id="log"></div>
+
+    <div class="notification" id="notif"></div>
+  </div>
+
+  <script>
+    function validateToken() {
+      const token = document.getElementById("token").value;
+      const notif = document.getElementById("notif");
+
+      // Simuler la validation
+      if (token.length > 10) {
+        notif.textContent = "Token Valide";
+        notif.className = "notification";
+      } else {
+        notif.textContent = "Token Invalide";
+        notif.className = "notification error";
+      }
+      notif.style.display = "block";
+      setTimeout(() => notif.style.display = "none", 3000);
+    }
+
+    function logMessage(type, msg) {
+      const log = document.getElementById("log");
+      const span = document.createElement("span");
+      span.className = type;
+      span.textContent = msg + "\n";
+      log.appendChild(span);
+      log.scrollTop = log.scrollHeight;
+    }
+
+    function startDmall() {
+      logMessage("log-success", "[*] Bot en ligne");
+      logMessage("log-success", "[+] Message envoyé a user123 !");
+    }
+
+    function stopDmall() {
+      logMessage("log-error", "[!] Dmall arrêté par l'utilisateur.");
+    }
+  </script>
+</body>
+</html>
