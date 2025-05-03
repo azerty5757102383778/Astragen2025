@@ -2,118 +2,120 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Connexion</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Discord Tools</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
   <style>
     * {
       box-sizing: border-box;
-    }
-    body {
       margin: 0;
       padding: 0;
-      background-color: #0f172a;
+    }
+
+    body {
       font-family: 'Inter', sans-serif;
+      background: linear-gradient(to bottom, #0f172a, #1e293b);
       color: white;
       height: 100vh;
       display: flex;
-      justify-content: center;
-      align-items: center;
+      overflow: hidden;
     }
-    .container {
+
+    .sidebar {
+      width: 220px;
       background-color: #1e293b;
-      padding: 40px;
-      border-radius: 12px;
-      width: 100%;
-      max-width: 400px;
-      box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+      z-index: 2;
     }
-    h2 {
-      text-align: center;
-      margin-bottom: 25px;
+
+    .sidebar h2 {
+      font-size: 20px;
       font-weight: 600;
-      font-size: 22px;
-    }
-    input[type="email"],
-    input[type="password"] {
-      width: 100%;
-      padding: 14px;
-      margin: 12px 0;
-      background-color: #334155;
-      border: none;
-      border-radius: 8px;
-      color: white;
-      font-size: 15px;
-    }
-    input::placeholder {
-      color: #cbd5e1;
-    }
-    button {
-      width: 100%;
-      padding: 14px;
-      background-color: #10b981;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      margin-top: 18px;
-    }
-    button:hover {
-      background-color: #059669;
-    }
-    .link {
-      margin-top: 20px;
+      margin-bottom: 20px;
       text-align: center;
-      font-size: 14px;
     }
-    .link a {
-      color: #10b981;
+
+    .sidebar a {
       text-decoration: none;
+      color: white;
+      background-color: #334155;
+      padding: 12px 20px;
+      border-radius: 10px;
+      text-align: center;
+      font-weight: 500;
+      transition: 0.3s;
+      box-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
     }
-    .link a:hover {
-      text-decoration: underline;
+
+    .sidebar a:hover {
+      background-color: #10b981;
+      box-shadow: 0 0 20px #10b981;
     }
-    .error {
-      color: #f87171;
-      font-size: 14px;
-      margin-top: 10px;
-      display: none;
+
+    .main-content {
+      flex-grow: 1;
+      position: relative;
+      padding: 40px;
+      overflow: auto;
     }
-    .g-recaptcha {
-      margin-top: 15px;
+
+    .main-content h1 {
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    /* Flocons animés */
+    .snowflake {
+      position: fixed;
+      top: -10px;
+      color: white;
+      font-size: 1em;
+      user-select: none;
+      z-index: 1;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh);
+      }
     }
   </style>
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
-  <div class="container">
-    <h2>Se connecter</h2>
-    <form id="login-form">
-      <input type="email" id="email" placeholder="Adresse e-mail" required />
-      <input type="password" id="password" placeholder="Mot de passe" required />
-      <div class="g-recaptcha" data-sitekey="6LdPySwrAAAAAKEi0eFl07i79KQzO2fHK56wJF8Y"></div>
-      <div class="error" id="error-message">Veuillez valider le captcha.</div>
-      <button type="submit">Se connecter</button>
-    </form>
-    <div class="link">
-      <p>Pas encore de compte ? <a href="signup.html">Créer un compte</a></p>
-    </div>
+  <div class="sidebar">
+    <h2>Discord Tools</h2>
+    <a href="#">DMALL</a>
+    <a href="#">Spam Webhook</a>
   </div>
+
+  <div class="main-content">
+    <h1>Bienvenue sur Discord Tools</h1>
+    <p>Sélectionnez une catégorie à gauche pour commencer.</p>
+  </div>
+
+  <!-- Flocons -->
   <script>
-    document.getElementById("login-form").addEventListener("submit", function(e) {
-      e.preventDefault();
-      const email = document.getElementById("email").value;
-      const captchaResponse = grecaptcha.getResponse();
-      const errorBox = document.getElementById("error-message");
-      if (!captchaResponse) {
-        errorBox.style.display = "block";
-        return;
-      }
-      localStorage.setItem("user", JSON.stringify({ email }));
-      window.location.href = "home.html";
-    });
+    function createSnowflake() {
+      const snowflake = document.createElement('div');
+      snowflake.classList.add('snowflake');
+      snowflake.textContent = '❄';
+      snowflake.style.left = Math.random() * window.innerWidth + 'px';
+      snowflake.style.fontSize = (Math.random() * 10 + 10) + 'px';
+      snowflake.style.animationDuration = (Math.random() * 3 + 2) + 's';
+      document.body.appendChild(snowflake);
+
+      setTimeout(() => {
+        snowflake.remove();
+      }, 5000);
+    }
+
+    setInterval(createSnowflake, 200);
   </script>
 </body>
 </html>
