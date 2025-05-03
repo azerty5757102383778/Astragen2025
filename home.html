@@ -1,3 +1,4 @@
+<!-- home.html -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -6,9 +7,7 @@
   <title>Viewdb - Accueil</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
     body {
       margin: 0;
       padding: 0;
@@ -25,9 +24,6 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
     }
     .logo {
       font-size: 24px;
@@ -42,41 +38,19 @@
       color: white;
       text-decoration: none;
       cursor: pointer;
-      transition: color 0.3s;
     }
     .category:hover {
       color: #10b981;
     }
     .container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
       flex-grow: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       background-color: #1e293b;
       flex-direction: column;
+      text-align: center;
       padding: 40px;
-    }
-    .category-button {
-      background-image: url('https://i.pinimg.com/736x/c3/43/22/c343227a5e1bf9010e82f4a462915c80.jpg');
-      background-size: cover;
-      border-radius: 12px;
-      width: 300px;
-      height: 200px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 24px;
-      color: white;
-      font-weight: 600;
-      border: 2px solid white;
-      box-shadow: 0 0 15px rgba(0, 255, 100, 0.7);
-      cursor: pointer;
-      margin: 20px;
-      transition: all 0.3s;
-    }
-    .category-button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px rgba(0, 255, 100, 1);
     }
   </style>
 </head>
@@ -92,12 +66,7 @@
 
   <div class="container">
     <h2>Bienvenue sur Viewdb</h2>
-    <p>Découvrez des leaks, des outils et des technologies intéressantes.</p>
-    <div>
-      <a href="leak.html" class="category-button">Database</a>
-      <a href="leak.html" class="category-button">Tools</a>
-      <a href="leak.html" class="category-button">Tech</a>
-    </div>
+    <p>Explorez des ressources, outils et contenus exclusifs.</p>
   </div>
 </body>
 </html>
